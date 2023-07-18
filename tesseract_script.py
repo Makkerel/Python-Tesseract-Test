@@ -75,5 +75,3 @@ def run_tesseract():
         translation = Translator(to_lang="en", from_lang= translate_dictionary[language])
         translated = translation.translate(text)
         print(translated.replace("\n", "").strip())
-def git_stuff():
-    print("this is jsut a test for git")
