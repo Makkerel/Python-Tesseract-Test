@@ -37,16 +37,13 @@ def ask_tesseract_path():
     settings["tesseract_path"] = filedialog.askopenfilename()
     setting_change()
     pytesseract.pytesseract.tesseract_cmd = settings["tesseract_path"]
-    global config
-    config = f'--tessdata-dir "{tessdata}" -c tessedit_char_blacklist=♥abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*\/|()<>-+=:; -l {language} --psm {psm}'
 
 def ask_tessdata_path():
     global tessdata
     settings["tessdata_path"] = filedialog.askdirectory()
     setting_change()
-    tessdata = settings["tessdata_path"]
     global config
-    config = f'--tessdata-dir "{tessdata}" -c tessedit_char_blacklist=♥abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*\/|()<>-+=:; -l {language} --psm {psm}'
+    config = f'--tessdata-dir "{settings["tessdata_path"]}" -c tessedit_char_blacklist=♥abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*\/|()<>-+=:; -l {language} --psm {psm}'
 
 #Allows you to paste image and saves it automatically
 def paste_image(): 
