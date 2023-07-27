@@ -96,6 +96,7 @@ tesseract_config.pack(side=TOP, padx=10, pady= 5,fill=BOTH)
 language_menu = tb.Menubutton(frame_for_config, bootstyle = (INFO, OUTLINE), text= "Pick Language")
 language_menu.pack(side=TOP, padx=10, pady= 5,fill=BOTH,)
 language_options = tb.Menu(language_menu)
+
 def language_picker(language):
     tesseract_script.settings["language"] = language
     tesseract_script.setting_change()
@@ -111,6 +112,7 @@ language_menu["menu"] = language_options
 psm_menu = tb.Menubutton(frame_for_config, bootstyle = (INFO, OUTLINE), text= "Pick PSM Mode")
 psm_menu.pack(side=TOP, padx=10, pady= 5,fill=BOTH,)
 psm_options = tb.Menu(psm_menu)
+
 def psm_picker(psm):
     tesseract_script.settings["psm"] = str(psm)
     tesseract_script.setting_change()
