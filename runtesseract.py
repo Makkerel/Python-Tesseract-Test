@@ -118,8 +118,8 @@ def psm_picker(psm):
     tesseract_script.setting_change()
     tesseract_script.psm = psm
     tesseract_script.config = f'--tessdata-dir "{tesseract_script.tessdata}" -c tessedit_char_blacklist=♥abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*\/|()<>-+=:; -l {tesseract_script.language} --psm {psm}'
-
     psm_menu.config(text=f'PSM Mode: {psm}')
+
 for x in range(14):
     psm_options.add_radiobutton(label=x, command= lambda x = x: psm_picker(x), font=("Source Code Pro", 8))
 psm_menu['menu'] = psm_options
