@@ -50,7 +50,7 @@ def translate_reset():
 
 #Root is the Window that contains everything
 root = tb.Window(themename="darkly")
-root.geometry("1000x900")
+root.geometry("1000x1000")
 root.title("Tesseract Image Translater")
 
 #This frame contains the text box and image boxs
