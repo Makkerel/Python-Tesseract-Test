@@ -65,10 +65,11 @@ text_box = tk.Text(frameForTextImage, font=("Source Code Pro", 12))
 text_box.pack(side=RIGHT, padx=10, pady=10, fill=BOTH,expand=TRUE)
 text_box.config(width=35, height=21)
 
-#Contains the buttons for running the app 
+#Contains the controls for the app 
 frame_for_controls = tb.Frame(root, bootstyle = "Dark")
 frame_for_controls.pack(side=TOP, padx=10,pady=10,fill=BOTH,expand=TRUE)
 
+#Contains the buttons that run the app
 frame_for_buttons = tb.Frame(frame_for_controls)
 frame_for_buttons.pack(side=LEFT, padx=10,pady=10,fill=BOTH, expand=TRUE)
 
@@ -123,6 +124,10 @@ def psm_picker(psm):
 for x in range(14):
     psm_options.add_radiobutton(label=x, command= lambda x = x: psm_picker(x), font=("Source Code Pro", 8))
 psm_menu['menu'] = psm_options
+
+text_var = tk.StringVar()
+text_input =tb.Entry(frame_for_config, bootstyle =INFO, textvariable=text_var)
+text_input.pack(side=TOP, padx=10, pady= 5,fill=BOTH)
 
 tesseract_picker = tb.Button(frame_for_config, bootstyle =(INFO, OUTLINE), text="Find Your Tesseract.exe", command= tesseract_script.ask_tesseract_path)
 tesseract_picker.pack(side=TOP, padx=10, pady= 5,fill=BOTH,)
