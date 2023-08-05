@@ -7,11 +7,9 @@ from translate import Translator
 
 #Json Setting File
 if os.path.isfile("setting.json"):
-    print("True")
     with open("setting.json", "r") as f:
         settings = json.load(f)
 else:
-    print("False")
     settings = {
         "tesseract_path": "", 
         "tessdata_path": "", 
