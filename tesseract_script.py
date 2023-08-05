@@ -1,12 +1,26 @@
 import pytesseract
 import json
+import os
 from PIL import Image,ImageGrab
 from tkinter import filedialog
 from translate import Translator
 
 #Json Setting File
-with open("setting.json", "r") as f:
-    settings = json.load(f)
+if os.path.isfile("setting.json"):
+    print("True")
+    with open("setting.json", "r") as f:
+        settings = json.load(f)
+else:
+    print("False")
+    settings = {
+        "tesseract_path": "", 
+        "tessdata_path": "", 
+        "language": "", 
+        "psm": "", 
+        "blacklist": ""
+    }
+    with open('settings.json', 'w') as f:
+        json.dump(settings, f)
 
 def setting_change():
     with open("setting.json", "w") as f:
