@@ -6,8 +6,8 @@ from tkinter import filedialog
 from translate import Translator
 
 #Json Setting File
-if os.path.isfile("setting.json"):
-    with open("setting.json", "r") as f:
+if os.path.isfile("settings.json"):
+    with open("settings.json", "r") as f:
         settings = json.load(f)
 else:
     settings = {
