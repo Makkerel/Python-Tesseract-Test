@@ -20,8 +20,11 @@ else:
     with open('settings.json', 'w') as f:
         json.dump(settings, f)
 
+with open('settings.json', 'r') as f:
+    json.load(f)
+
 def setting_change():
-    with open("setting.json", "w") as f:
+    with open("settings.json", "w") as f:
         json.dump(settings, f)
 
 #config for tesseract OCR
