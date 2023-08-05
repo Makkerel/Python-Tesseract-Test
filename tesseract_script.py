@@ -17,7 +17,8 @@ pytesseract.pytesseract.tesseract_cmd = settings["tesseract_path"]
 tessdata = settings["tessdata_path"]
 language = settings["language"]
 psm = settings["psm"]
-config = f'--tessdata-dir "{tessdata}" -c tessedit_char_blacklist=♥abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*\/|()<>-+=:; -l {language} --psm {psm}'
+blacklist = settings["blacklist"]
+config = f'--tessdata-dir "{tessdata}" -c tessedit_char_blacklist={blacklist} -l {language} --psm {psm}'
 
 translate_dictionary = {
     "jpn": "ja",
