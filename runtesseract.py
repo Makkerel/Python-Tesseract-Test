@@ -50,7 +50,7 @@ def translate_reset():
 
 #Root is the Window that contains everything
 root = tb.Window(themename="darkly")
-root.geometry("1000x1000")
+root.geometry("1800x1000")
 root.title("Tesseract Image Translater")
 
 #This frame contains the text box and image boxs
@@ -102,7 +102,7 @@ def language_picker(language):
     tesseract_script.settings["language"] = language
     tesseract_script.setting_change()
     tesseract_script.language = language
-    tesseract_script.config = f'--tessdata-dir "{tesseract_script.tessdata}" -c tessedit_char_blacklist=♥abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*\/|()<>-+=:; -l {language} --psm {tesseract_script.psm}'
+    tesseract_script.config = f'--tessdata-dir "{tesseract_script.tessdata}" -c tessedit_char_blacklist={tesseract_script.blacklist} -l {language} --psm {tesseract_script.psm}'
     language_menu.config(text=f'Language: {language}')
 
 for x in ["jpn", "jpn_vert", "kor", "kor_vert"]:
@@ -118,21 +118,32 @@ def psm_picker(psm):
     tesseract_script.settings["psm"] = str(psm)
     tesseract_script.setting_change()
     tesseract_script.psm = psm
-    tesseract_script.config = f'--tessdata-dir "{tesseract_script.tessdata}" -c tessedit_char_blacklist=♥abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*\/|()<>-+=:; -l {tesseract_script.language} --psm {psm}'
+    tesseract_script.config = f'--tessdata-dir "{tesseract_script.tessdata}" -c tessedit_char_blacklist={tesseract_script.blacklist} -l {tesseract_script.language} --psm {psm}'
     psm_menu.config(text=f'PSM Mode: {psm}')
 
 for x in range(14):
     psm_options.add_radiobutton(label=x, command= lambda x = x: psm_picker(x), font=("Source Code Pro", 8))
 psm_menu['menu'] = psm_options
 
-text_var = tk.StringVar()
-text_input =tb.Entry(frame_for_config, bootstyle =INFO, textvariable=text_var)
-text_input.pack(side=TOP, padx=10, pady= 5,fill=BOTH)
-
 tesseract_picker = tb.Button(frame_for_config, bootstyle =(INFO, OUTLINE), text="Find Your Tesseract.exe", command= tesseract_script.ask_tesseract_path)
 tesseract_picker.pack(side=TOP, padx=10, pady= 5,fill=BOTH,)
 
 tessdata_picker = tb.Button(frame_for_config, bootstyle =(INFO, OUTLINE), text="Find Your Tessdata folder", command= tesseract_script.ask_tessdata_path)
 tessdata_picker.pack(side=TOP, padx=10, pady= 5,fill=BOTH,)
+
+blacklist_label = tb.Label(frame_for_config, bootstyle = INFO, text= "Character Blacklist")
+blacklist_label.pack(side=LEFT, padx=10,pady=5, fill=BOTH)
+
+bcharacters = tk.StringVar()
+blacklist =tb.Entry(frame_for_config, bootstyle =INFO, textvariable=bcharacters)
+blacklist.pack(side=LEFT, padx=10, pady= 5,fill=BOTH,expand=TRUE)
+
+def character_blacklist_change(*args):
+    blacklist_str = tesseract_script.remove_string_stuff(bcharacters.get())
+    tesseract_script.settings["blacklist"] = blacklist_str
+    tesseract_script.setting_change()
+    tesseract_script.config = f'--tessdata-dir "{tesseract_script.tessdata}" -c tessedit_char_blacklist={blacklist_str} -l {tesseract_script.language} --psm {tesseract_script.psm}'
+    
+bcharacters.trace_add("write", character_blacklist_change)
 
 root.mainloop()
