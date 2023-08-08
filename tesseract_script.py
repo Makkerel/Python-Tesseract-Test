@@ -59,7 +59,7 @@ def ask_tessdata_path():
     settings["tessdata_path"] = filedialog.askdirectory()
     setting_change()
     global config
-    config = f'--tessdata-dir "{settings["tessdata_path"]}" -c tessedit_char_blacklist=♥abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*\/|()<>-+=:; -l {language} --psm {psm}'
+    config = f'--tessdata-dir "{settings["tessdata_path"]}" -c tessedit_char_blacklist={blacklist} -l {language} --psm {psm}'
 
 #Allows you to paste image and saves it automatically
 def paste_image(): 
