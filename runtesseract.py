@@ -33,7 +33,7 @@ def charboxes():
         for i in range(4, boxes):
             if data['conf'][i] >= 50 and data["text"][i] != "":
                 (x, y, w, h) = (data['left'][i], data['top'][i], data['width'][i], data['height'][i])
-                cv2.rectangle(img_cv2, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                cv2.rectangle(img_cv2, (x, y), (x + w, y + h), (0, 255, 0), 1)
         img = ImageTk.PhotoImage(image=Image.fromarray(img_cv2))
         img_paths.append(img)
         tb.Label(frameImages, image=img).pack(pady=10)
