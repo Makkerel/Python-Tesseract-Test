@@ -5,7 +5,7 @@ You need:
 - [Pillow](https://pypi.org/project/pillow/)
 - [Ttkbootstrap](https://pypi.org/project/ttkbootstrap/)
 - [Pytesseract](https://pypi.org/project/pytesseract/)
-You also need [Tesseract][https://tesseract-ocr.github.io/tessdoc/Installation.html] the app.
+You also need [Tesseract](https://tesseract-ocr.github.io/tessdoc/Installation.html) the app.
 
 # Future Features 
 - Horizontal Scrolling
