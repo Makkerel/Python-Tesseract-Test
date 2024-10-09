@@ -4,8 +4,9 @@ First Application: Tkinter Desktop App that translates text from an image. You n
 You need:
 - [Pillow](https://pypi.org/project/pillow/)
 - [Ttkbootstrap](https://pypi.org/project/ttkbootstrap/)
-- [Pytesseract](https://pypi.org/project/pytesseract/)
-You also need [Tesseract](https://tesseract-ocr.github.io/tessdoc/Installation.html) the app.
+- [Translate](https://pypi.org/project/translate/) Hasn't been updated in awhile will probably replace with a translator API.
+- [Pytesseract](https://pypi.org/project/pytesseract/)\
+You also need [Tesseract](https://tesseract-ocr.github.io/tessdoc/Installation.html) the app.You can specify the directory of it in the application.
 
 # Future Features 
 - Horizontal Scrolling
